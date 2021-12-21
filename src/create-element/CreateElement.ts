@@ -16,7 +16,7 @@ const elementsMap = {
   'CODE': 'code'
 }
 
-export class ECreateTag extends LitElement {
+export class CreateElement extends LitElement {
 
   @property({ type: String }) type: BLOCK_TYPE = 'TEXT'
 

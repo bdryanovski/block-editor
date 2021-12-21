@@ -1,1 +1,1 @@
-export { BlockEditor } from './internal/components/BlockEditor.js';
+export { BlockEditor } from './editor/BlockEditor.js';

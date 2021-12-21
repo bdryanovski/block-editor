@@ -2,15 +2,15 @@ import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 
 
-export class EDraggable extends LitElement {
+export class DraggableElements extends LitElement {
 
   /**
    * Let me attach draggable on elements that I wan only
    */
-  @property({ type: String }) tagName: string = 'e-block';
+  @property({ type: String }) tagName: string = 'editable-block';
 
   static styles = css`
-    ::slotted(e-block) {
+    ::slotted(*) {
       display: block;
       cursor: move;
       padding: 10px;

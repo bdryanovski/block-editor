@@ -1,9 +1,11 @@
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators.js';
 
-export class EBlock extends LitElement {
-  @property({ type: String }) uid: string = 'xxx';
-  @property({ type: Number }) position: number = 0;
+import { uuid } from '../utils/uuid.js'
+
+export class EditableBlock extends LitElement {
+
+  @property({ type: String }) uid: string = uuid();
   @property({ type: String }) content?: string;
 
   @property({ type: String}) placeholder: string = 'Use / or insert text here ...';
@@ -12,7 +14,6 @@ export class EBlock extends LitElement {
     return new CustomEvent('block:updated', {
       detail: {
         uid: this.uid,
-        position: this.position,
         value: this.innerText,
         target: this.container,
       },

@@ -1,7 +1,7 @@
 import { html, css, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
 
-import { BLOCK } from './EBlocks.js';
+import { BLOCK } from '../element-blocks/ElementBlocks.js';
 
 export class BlockEditor extends LitElement {
   static styles = css`
@@ -53,7 +53,7 @@ export class BlockEditor extends LitElement {
   render() {
     return html`
       <h2>Block Editor</h2>
-      <e-blocks .blocks=${this.blocks}></e-blocks>
+      <element-blocks .blocks=${this.blocks}></element-blocks>
     `;
   }
 }

@@ -1,5 +1,6 @@
-import './block-editor.js';
-import './e-blocks.js';
-import './e-block.js';
-import './e-create-tag.js';
-import './e-draggable.js';
+import './drag-n-drop/draggable-elements.js'
+import './create-element/create-element.js'
+import './editable/editable-block.js'
+import './editor/block-editor.js'
+import './element-blocks/element-blocks.js'
+
