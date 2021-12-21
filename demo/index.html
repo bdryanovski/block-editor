@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <div id="demo"></div>
+
+  <script type="module">
+    import { html, render } from 'lit';
+    import '../dist/src/register.all.js';
+
+    render(
+      html`
+        <block-editor></block-editor>
+      `,
+      document.querySelector('#demo')
+    );
+  </script>
+</body>
+</html>
