@@ -3,6 +3,9 @@ import { property } from 'lit/decorators.js';
 
 import { BLOCK } from '../element-blocks/ElementBlocks.js';
 
+// components
+import '../element-blocks/element-blocks.js'
+
 export class BlockEditor extends LitElement {
   static styles = css`
     :host {

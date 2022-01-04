@@ -23,10 +23,14 @@ export class CreateElement extends LitElement {
   static styles = css`
     h1, h2, h3, h4 {
       color: #1e293b;
+      margin: 0;
+      padding-bottom: 1rem;
     }
 
     p {
-      padding: 1rem 0;
+      margin: 0;
+      padding: 0;
+      padding-bottom: 1rem;
     }
 
     pre {
@@ -38,6 +42,7 @@ export class CreateElement extends LitElement {
       border: none;
       letter-spacing: normal;
       word-break: break-all;
+      margin: 0;
 
     }
 

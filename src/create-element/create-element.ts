@@ -1,3 +1,10 @@
+import { register } from '../utils/register.js';
 import { CreateElement } from './CreateElement.js'
 
-window.customElements.define('create-element', CreateElement)
+register('create-element', CreateElement)
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'create-element': CreateElement
+  }
+}

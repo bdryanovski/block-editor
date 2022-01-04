@@ -2,18 +2,17 @@ import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 
 
-export class DraggableElements extends LitElement {
+export class DraggableList extends LitElement {
 
   /**
    * Let me attach draggable on elements that I wan only
    */
-  @property({ type: String }) tagName: string = 'editable-block';
+  @property({ type: String }) tagName: string = 'draggable-item';
 
   static styles = css`
     ::slotted(*) {
       display: block;
-      cursor: move;
-      padding: 10px;
+      width: 1960px;
     }
 
     ::slotted(.drag-sort-active) {
@@ -24,7 +23,8 @@ export class DraggableElements extends LitElement {
   `
 
   firstUpdated() {
-    this.rows.forEach((row: Element) => {
+    this.rows
+    .forEach((row: Element) => {
       row.setAttribute('draggable', 'true')
       row.addEventListener('drag', this.handleDrag);
       row.addEventListener('dragend', this.handleDrop);

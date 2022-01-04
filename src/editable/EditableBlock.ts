@@ -1,9 +1,18 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 
 import { uuid } from '../utils/uuid.js'
 
 export class EditableBlock extends LitElement {
+
+  static styles = css
+  // This style remove the outline of the edittablecontent box
+  // also don't let you see how big is a container
+  `
+    ::slotted(*:focus) {
+      outline: 0;
+    }
+  `
 
   @property({ type: String }) uid: string = uuid();
   @property({ type: String }) content?: string;
@@ -30,11 +39,11 @@ export class EditableBlock extends LitElement {
     // make sure that there is shadowRoot already present
     if (!this.hasUpdated) { return }
 
-    const slt = (this.shadowRoot?.getElementById('internalContent') as HTMLSlotElement).assignedElements();
+    const slot = (this.shadowRoot?.querySelector('slot') as HTMLSlotElement).assignedElements();
 
     // @ts-ignore
-    this._element = slt.length
-      ? slt[0]
+    this._element = slot.length
+      ? slot[0]
       : this.shadowRoot?.getElementById('placeholder');
 
     return this._element
@@ -42,15 +51,11 @@ export class EditableBlock extends LitElement {
 
   firstUpdated() {
     if (!this.container) { return /* no element to edit */ }
-    // @ts-ignore
-    this.container.contentEditable = true
+    this.container.contentEditable = 'true'
+    this.container.addEventListener('input', () => this.dispatchEvent(this.updateEvent))
   }
 
   render() {
-    return html`<slot
-      id="internalContent"
-      @input=${() => { this.dispatchEvent(this.updateEvent) }}
-      ><p id="placeholder">${this.placeholder}</p>
-      </slot>`
+    return html`<slot placeholder="${this.placeholder}"></slot>`
   }
 }

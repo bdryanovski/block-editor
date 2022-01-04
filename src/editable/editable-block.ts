@@ -1,3 +1,10 @@
+import { register } from '../utils/register.js';
 import { EditableBlock } from './EditableBlock.js'
 
-window.customElements.define('editable-block', EditableBlock)
+register('editable-block', EditableBlock)
+
+declare global {
+  interface HTMLElementTagName {
+    'editable-block': EditableBlock
+  }
+}

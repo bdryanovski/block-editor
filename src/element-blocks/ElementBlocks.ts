@@ -5,6 +5,12 @@ import { BLOCK_TYPE } from '../create-element/CreateElement.js';
 
 import { sortArrayBy } from '../utils/sorting.js';
 
+// components
+import '../drag-n-drop/draggable-item.js'
+import '../drag-n-drop/draggable-list.js'
+import '../editable/editable-block.js'
+import '../create-element/create-element.js'
+
 export type BLOCK = {
   type: BLOCK_TYPE,
   position: number,
@@ -30,25 +36,26 @@ export class ElementBlocks extends LitElement {
 
   render() {
     return html`
-      <draggable-elements>
+      <draggable-list>
         ${
           this.blocks
             .sort(sortArrayBy('position'))
             .map((block, index) => {
               return html`
-                <editable-block
-                  .uid=${index}
-                  .type=${block.type}
-                  .position=${block.position}
-                  .content=${block.content}
-                  >
-                  <create-element .type="${block.type}">${block.content}</create-element>
-                </editable-block>
-
+                <draggable-item>
+                  <editable-block
+                    .uid=${index}
+                    .type=${block.type}
+                    .position=${block.position}
+                    .content=${block.content}
+                    >
+                    <create-element .type="${block.type}">${block.content}</create-element>
+                  </editable-block>
+                </draggable-item>
               `;
             })
         }
-      </draggable-elements>
+      </draggable-list>
     `;
   }
 }
