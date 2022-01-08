@@ -17,11 +17,14 @@ export class DraggableItem extends LitElement {
       font-weight: bold;
       cursor: move;
     }
+    .content {
+      flex: 1;
+    }
   `
   render() {
     return html`
     <div class="draggable-row">
-      <div class="draggable">::</div>
+      <div class="draggable" draggable="true">::</div>
       <div class="content">
         <slot></slot>
       </div>

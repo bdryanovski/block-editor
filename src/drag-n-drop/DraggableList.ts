@@ -12,12 +12,9 @@ export class DraggableList extends LitElement {
   static styles = css`
     ::slotted(*) {
       display: block;
-      width: 1960px;
     }
 
     ::slotted(.drag-sort-active) {
-      background: transparent;
-      color: transparent;
       border: 1px solid #4ca1af;
     }
   `
@@ -25,7 +22,6 @@ export class DraggableList extends LitElement {
   firstUpdated() {
     this.rows
     .forEach((row: Element) => {
-      row.setAttribute('draggable', 'true')
       row.addEventListener('drag', this.handleDrag);
       row.addEventListener('dragend', this.handleDrop);
     })
@@ -33,7 +29,6 @@ export class DraggableList extends LitElement {
 
   disconnectCallback() {
     this.rows.forEach((row: Element) => {
-      row.setAttribute('draggable', 'false')
       row.removeEventListener('drag', this.handleDrag);
       row.removeEventListener('dragend', this.handleDrop);
     })
