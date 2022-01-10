@@ -6,9 +6,19 @@ export class DraggableList extends LitElement {
 
   /**
    * Let me attach draggable on elements that I wan only
+   *
+   * @NOTE - this won't work with any other element than mention below,
+   * the reason is that I set `draggable` attribute inside the `draggable-item` by
+   * hand so this property is a bit pointless
+   *
+   * @TODO - resolve the issue with draggable-item attribute or drop the property
    */
   @property({ type: String }) tagName: string = 'draggable-item';
 
+
+  /**
+   * @TODO dragging item need better styles
+   */
   static styles = css`
     ::slotted(*) {
       display: block;
